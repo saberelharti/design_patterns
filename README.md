@@ -1,2 +1,2 @@
 # design_patterns
-Design patterns on Java
+Design patterns with Java

@@ -6,12 +6,20 @@ import com.company.memento.History;
 import com.company.state.Brush;
 import com.company.state.Canvas;
 import com.company.state.Selection;
+import com.company.strategy.BlackAndWitheFilter;
+import com.company.strategy.ImageStorage;
+import com.company.strategy.JpgCompressor;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        testIteratorPattern();
+        testStrategyPattern();
+    }
+
+    public static void testStrategyPattern() {
+        ImageStorage imageStorage = new ImageStorage();
+        imageStorage.storeImage("a", new JpgCompressor(), new BlackAndWitheFilter());
     }
 
     public static void testIteratorPattern() {
@@ -23,7 +31,7 @@ public class Main {
 
         var iterator = history.createIterator();
 
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             System.out.println(iterator.current());
             iterator.next();
         }

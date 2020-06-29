@@ -9,12 +9,24 @@ import com.company.state.Selection;
 import com.company.strategy.BlackAndWitheFilter;
 import com.company.strategy.ImageStorage;
 import com.company.strategy.JpgCompressor;
+import com.company.template.GenerateReportTask;
+import com.company.template.Task;
+import com.company.template.TransferMoneyTask;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        testStrategyPattern();
+        testTemplatePattern();
+    }
+
+    public static void testTemplatePattern() {
+
+        TransferMoneyTask transferMoneyTask = new TransferMoneyTask();
+        transferMoneyTask.execute();
+
+        GenerateReportTask generateReportTask = new GenerateReportTask();
+        generateReportTask.execute();
     }
 
     public static void testStrategyPattern() {

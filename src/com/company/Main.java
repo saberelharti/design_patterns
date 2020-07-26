@@ -1,5 +1,8 @@
 package com.company;
 
+import com.company.command.AddCustomerCommand;
+import com.company.command.CustomerService;
+import com.company.command.fx.Button;
 import com.company.iterator.BrowseHistory;
 import com.company.memento.Editor;
 import com.company.memento.History;
@@ -10,14 +13,20 @@ import com.company.strategy.BlackAndWitheFilter;
 import com.company.strategy.ImageStorage;
 import com.company.strategy.JpgCompressor;
 import com.company.template.GenerateReportTask;
-import com.company.template.Task;
 import com.company.template.TransferMoneyTask;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        testTemplatePattern();
+        testCommandPattern();
+    }
+
+    public static void testCommandPattern() {
+        CustomerService customerService = new CustomerService();
+        AddCustomerCommand addCustomerCommand = new AddCustomerCommand(customerService);
+        Button button = new Button(addCustomerCommand);
+        button.click();
     }
 
     public static void testTemplatePattern() {

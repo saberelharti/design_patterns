@@ -6,6 +6,9 @@ import com.company.command.fx.Button;
 import com.company.iterator.BrowseHistory;
 import com.company.memento.Editor;
 import com.company.memento.History;
+import com.company.observer.Chart;
+import com.company.observer.DataSource;
+import com.company.observer.SpreedSheet;
 import com.company.state.Brush;
 import com.company.state.Canvas;
 import com.company.state.Selection;
@@ -19,7 +22,19 @@ public class Main {
 
     public static void main(String[] args) {
 
-        testCommandPattern();
+        testObserverPattern();
+    }
+
+    public static void testObserverPattern() {
+        Chart chart = new Chart();
+        SpreedSheet spreedSheet1 = new SpreedSheet();
+        SpreedSheet spreedSheet2 = new SpreedSheet();
+
+        DataSource dataSource = new DataSource();
+        dataSource.addObserver(chart);
+        dataSource.addObserver(spreedSheet1);
+        dataSource.addObserver(spreedSheet1);
+        dataSource.setValue(1);
     }
 
     public static void testCommandPattern() {
